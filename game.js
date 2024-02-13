@@ -14,11 +14,11 @@ function getComputerChoice(){
     }
     console.log('The computer choice is '+getComputerChoice())
 
-    const playerSelection = 'SCissors';
+    const playerSelection = prompt('Choose ...');
     console.log('Users choice is '+ playerSelection);
     const computerSelection= getComputerChoice();
 
-    
+
     function playRound(playerSelection, computerSelection){
         playerSelection= playerSelection.toLowerCase();
         computerSelection= computerSelection.toLowerCase();
@@ -41,7 +41,20 @@ function getComputerChoice(){
         console.log('You lose');
     } 
 }
-playRound(playerSelection,computerSelection);
+
+//playGame function 
+function playGame(){
+    console.log(playRound(playerSelection,computerSelection))
+
+}
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
+
+
+
 
 
 
