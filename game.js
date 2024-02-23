@@ -8,6 +8,7 @@ let userScore = 0;
 let pcScore =0 ;
 let userOverallScore= 0;
 let pcOverallScore = 0;
+let gameOver =false;
 
 
 
@@ -57,11 +58,12 @@ function getComputerChoice(){
 
 
         if (playerSelection === computerSelection){
-          //  let draw = document.createElement("section");
-            //draw.textContent="Its a draw";
-            //gameContainer.appendChild(draw);
+          
             console.log("Draw");
             alert("Its a draw");
+            
+            userSection.textContent = 'User: ' + userScore;
+            computerSection.textContent = 'Computer: ' + pcScore;
 
        
     }else if((playerSelection==='rock' && computerSelection==='scissors') || 
@@ -69,35 +71,65 @@ function getComputerChoice(){
     (playerSelection==='scissors' && computerSelection==='paper'))
    
      {
-        let winLabel = document.createElement("section")
-       // winLabel.textContent="You win";
-        //gameContainer.appendChild(winLabel);
         console.log('User wins');
+        userScore++;
         userSection.textContent ='User :'+userScore;
-        return userScore++;
         
 
     }
     else {
-        let lose= document.createElement("section");
-       // lose.textContent="Computer wins";
-        //gameContainer.appendChild(lose);
+        
         console.log('You lose');
+        pcScore++;
         computerSection.textContent ='Computer :'+pcScore;
-        return pcScore++;
         
     } 
+    if(userScore>=5 || pcScore>=5){
+        gameOver = true;
+        endGame();
+        reset();
+        
+
+    }
     console.log('pc socore :'+pcScore);
     console.log('users score :'+userScore);
+}
+
+
+    function endGame() {
+        if(userScore==5){
+            alert("user wins");
+            
+        }
+        else if(pcScore==5){
+            alert("computer wins")
+            
+        }
+        
+        
+       
+
 }
 
 
 
 //playGame function 
 function playGame(){
-    console.log(playRound(player,computerSelection))
+    if(!gameOver){
+        playRound(player,computerSelection);
+
+    }
+    
 
 }
+function reset(){
+    userScore=0;
+    pcScore=0;
+    gameOver=false;
+}
+
+
+
 
 
 
